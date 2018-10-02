@@ -73,7 +73,9 @@ comparisons = pd.concat((predictions_series,test_Close),axis=1)
 print(comparisons)
 print(prediction_error)
 
-# Simulating one_day_ahead
+# Accuracy would improve greatly by making predictions only one day ahead. This more closely simulates what you'd do if you were trading using the algorithm.
+
+# Simulating one_day_ahead:
 # 2015 -12 - 1,2,3,4,7 Last dates
 
 train2 = sphist[sphist["Date"] <= datetime(year=2015,month=12,day=4)]
@@ -116,13 +118,11 @@ CANDIDATES FOR RATIOS:
 
 SOME IDEAS TO CONTINUE:
 
-Accuracy would improve greatly by making predictions only one day ahead. For example, train a model using data from 1951-01-03 to 2013-01-02, make predictions for 2013-01-03, and then train another model using data from 1951-01-03 to 2013-01-03, make predictions for 2013-01-04, and so on. This more closely simulates what you'd do if you were trading using the algorithm.
+We can improve the algorithm used significantly trying another techniques, like random forest.
 
-You can also improve the algorithm used significantly. Try other techniques, like a random forest, and see if they perform better.
+We can incorporate outside data, such as the weather in New York City (where most trading happens) the day before, and the amount of Twitter activity around certain stocks.
 
-You can also incorporate outside data, such as the weather in New York City (where most trading happens) the day before, and the amount of Twitter activity around certain stocks.
+We can make the system real-time by writing an automated script to download the latest data when the market closes, and make predictions for the next day.
 
-You can also make the system real-time by writing an automated script to download the latest data when the market closes, and make predictions for the next day.
-
-Finally, you can make the system "higher-resolution". You're currently making daily predictions, but you could make hourly, minute-by-minute, or second by second predictions. This will require obtaining more data, though. You could also make predictions for individual stocks instead of the S&P500.
+Finally, we can make the system "higher-resolution". We're currently making daily predictions, but we could make hourly, minute-by-minute, or second by second predictions. This will require obtaining more data, though. We could also make predictions for individual stocks instead of the S&P500.
 """
